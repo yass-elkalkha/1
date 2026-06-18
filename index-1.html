@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plats Healthy — Né à Safi, fait pour vous</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g1:#0d2818;--g2:#1a4731;--g3:#2d7a4f;--g4:#4caf78;--g5:#e8f5ee;
+  --o1:#f4832a;--o2:#ffa55a;--o3:#fff3ea;
+  --w:#fff;--off:#f9fafb;--gl:#f0f4f2;--gm:#8a9e95;--dark:#080f0b;--body:#2c3e35;
+  --gb:rgba(255,255,255,0.1);--gb2:rgba(255,255,255,0.2);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--body);background:var(--w);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:16px 56px;background:rgba(8,15,11,0.8);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.06);transition:all .3s}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:900;font-size:21px;color:#fff;letter-spacing:-.5px}
+.nav-logo span{color:var(--o1)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--o1);color:#fff;border:none;padding:10px 22px;border-radius:9px;font-family:'Sora',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s;box-shadow:0 4px 20px rgba(244,131,42,.35)}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(244,131,42,.5)}
+.lang-toggle{display:flex;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:4px;gap:4px;margin-right:12px}
+.lang-btn{padding:6px 14px;border-radius:50px;font-size:12px;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.55);font-family:'Sora',sans-serif;transition:all .2s;letter-spacing:.04em}
+.lang-btn.active{background:rgba(255,255,255,.18);color:#fff}
+[data-lang="ar"] .lang-fr-text{display:none}
+[data-lang="ar"] .lang-ar-text{display:inline}
+[data-lang="fr"] .lang-fr-text{display:inline}
+[data-lang="fr"] .lang-ar-text{display:none}
+
+/* HERO */
+#hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:130px 80px 90px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,rgba(8,15,11,.92) 0%,rgba(26,71,49,.78) 45%,rgba(244,131,42,.12) 100%)}
+.hero-content{position:relative;z-index:1;max-width:720px}
+.hero-origin{display:inline-flex;align-items:center;gap:10px;background:rgba(76,175,120,.18);border:1px solid rgba(76,175,120,.35);border-radius:50px;padding:7px 18px;color:var(--g4);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:30px}
+.hero-origin .dot{width:7px;height:7px;background:var(--g4);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-h1{font-family:'Sora',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:900;color:#fff;line-height:1.07;letter-spacing:-2px;margin-bottom:26px}
+.hero-h1 em{font-style:normal;color:var(--o1)}
+.hero-h1 .under{position:relative;display:inline-block}
+.hero-h1 .under::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--g4),var(--o1));border-radius:2px}
+.hero-sub{font-size:clamp(15px,1.7vw,18px);color:rgba(255,255,255,.7);line-height:1.8;max-width:540px;margin-bottom:18px}
+.hero-slogan{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(14px,1.5vw,18px);color:var(--o2);margin-bottom:14px}
+.hero-slogan-ar{font-size:13px;color:rgba(255,255,255,.4);direction:rtl;margin-bottom:40px;font-family:'Inter',sans-serif}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px}
+.btn-p{background:var(--o1);color:#fff;padding:15px 30px;border-radius:11px;font-family:'Sora',sans-serif;font-weight:700;font-size:14px;text-decoration:none;transition:all .25s;box-shadow:0 8px 32px rgba(244,131,42,.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(244,131,42,.55)}
+.btn-s{background:rgba(255,255,255,.1);color:#fff;padding:15px 30px;border-radius:11px;font-family:'Sora',sans-serif;font-weight:600;font-size:14px;text-decoration:none;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);transition:all .25s}
+.btn-s:hover{background:rgba(255,255,255,.18)}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.09);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.16);border-radius:50px;padding:11px 20px}
+.pill-val{color:#fff;font-size:14px;font-weight:700;font-family:'Sora',sans-serif}
+.pill-label{color:rgba(255,255,255,.55);font-size:11px;font-weight:500}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.35);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);animation:sl 1.8s ease-in-out infinite}
+@keyframes sl{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* SAFI IDENTITY BAND */
+#safi-band{background:var(--g2);padding:28px 80px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.07)}
+.safi-band-text{color:rgba(255,255,255,.6);font-size:13px}
+.safi-band-text strong{color:#fff;font-weight:700}
+.safi-band-tags{display:flex;gap:10px;flex-wrap:wrap}
+.safi-band-tag{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:6px 14px;color:rgba(255,255,255,.7);font-size:12px;font-weight:600}
+
+/* SHARED */
+section{padding:100px 80px}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--g3);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-label::before{content:'';display:block;width:28px;height:2px;background:var(--g3)}
+.sec-h2{font-family:'Sora',sans-serif;font-size:clamp(30px,4vw,52px);font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px}
+.sec-h2 em{font-style:normal;color:var(--g3)}
+.sec-h2 b{font-style:normal;color:var(--o1)}
+.sec-intro{font-size:16px;line-height:1.8;color:var(--gm);max-width:580px;margin-bottom:60px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* STORY SECTION — naissance du projet */
+#story{background:var(--off);overflow:hidden}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-img-wrap{position:relative;border-radius:28px;overflow:hidden;height:520px}
+.story-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.story-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,15,11,.5),transparent 60%)}
+.story-img-caption{position:absolute;bottom:24px;left:24px;right:24px;color:#fff;font-size:13px;font-weight:600;line-height:1.5}
+.story-img-caption span{display:block;color:var(--o2);font-size:11px;font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em}
+.story-quote{position:relative;padding-left:28px;border-left:3px solid var(--o1);margin:32px 0;font-family:'Playfair Display',serif;font-style:italic;font-size:20px;color:var(--g2);line-height:1.6}
+.story-body p{font-size:15px;line-height:1.85;color:var(--body);margin-bottom:18px}
+.story-body p strong{color:var(--g2);font-weight:700}
+.story-facts{display:flex;gap:24px;margin-top:36px;flex-wrap:wrap}
+.story-fact{text-align:center;background:#fff;border:1px solid var(--gl);border-radius:16px;padding:20px 24px;flex:1;min-width:100px}
+.sf-num{font-family:'Sora',sans-serif;font-size:30px;font-weight:900;color:var(--g3);display:block}
+.sf-label{font-size:12px;color:var(--gm);margin-top:4px}
+
+/* PROBLEM */
+#problem{background:var(--dark)}
+#problem .sec-label{color:rgba(255,165,90,.9)}
+#problem .sec-label::before{background:var(--o1)}
+#problem .sec-h2{color:#fff}
+#problem .sec-h2 em{color:var(--o1)}
+#problem .sec-intro{color:rgba(255,255,255,.5)}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prob-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:36px 28px;position:relative;overflow:hidden;transition:all .3s}
+.prob-card:hover{transform:translateY(-6px);border-color:rgba(244,131,42,.35);background:rgba(255,255,255,.07)}
+.prob-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--o1),var(--o2))}
+.prob-icon{font-size:40px;margin-bottom:22px;display:block}
+.prob-stat{font-family:'Sora',sans-serif;font-size:46px;font-weight:900;color:var(--o1);line-height:1;margin-bottom:8px}
+.prob-title{font-weight:700;color:#fff;font-size:18px;margin-bottom:12px}
+.prob-desc{color:rgba(255,255,255,.48);font-size:14px;line-height:1.75}
+/* Safi specific context card */
+.prob-context{grid-column:1/-1;background:rgba(76,175,120,.08);border:1px solid rgba(76,175,120,.2);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:28px;margin-top:8px}
+.prob-context-icon{font-size:48px;flex-shrink:0}
+.prob-context-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.75}
+.prob-context-text strong{color:var(--g4);font-size:16px;display:block;margin-bottom:6px}
+
+/* SOLUTION */
+#solution{background:var(--g5)}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.sol-items{display:flex;flex-direction:column;gap:16px}
+.sol-item{display:flex;align-items:flex-start;gap:18px;background:#fff;border-radius:16px;padding:22px 24px;box-shadow:0 4px 20px rgba(26,71,49,.07);transition:all .25s}
+.sol-item:hover{transform:translateX(8px);box-shadow:0 8px 32px rgba(26,71,49,.13)}
+.sol-icon{width:46px;height:46px;background:linear-gradient(135deg,var(--g3),var(--g4));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.sol-text h4{font-weight:700;font-size:15px;color:var(--dark);margin-bottom:4px}
+.sol-text p{font-size:13px;color:var(--gm);line-height:1.65}
+.truck-box{background:linear-gradient(145deg,var(--g1),var(--g2));border-radius:28px;padding:52px 40px;text-align:center;position:relative;overflow:hidden}
+.truck-box::before{content:'';position:absolute;top:-40%;right:-20%;width:300px;height:300px;background:rgba(244,131,42,.12);border-radius:50%}
+.truck-box::after{content:'';position:absolute;bottom:-30%;left:-15%;width:220px;height:220px;background:rgba(76,175,120,.1);border-radius:50%}
+.truck-box-inner{position:relative;z-index:1}
+.truck-emoji-big{font-size:88px;display:block;animation:float 3.5s ease-in-out infinite;filter:drop-shadow(0 16px 40px rgba(0,0,0,.35));margin-bottom:24px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.truck-label{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:50px;padding:8px 20px;color:#fff;font-size:13px;font-weight:700;margin-bottom:20px}
+.truck-title{font-family:'Sora',sans-serif;font-size:28px;font-weight:900;color:#fff;margin-bottom:6px}
+.truck-city{color:rgba(255,255,255,.55);font-size:14px;margin-bottom:30px}
+.truck-chips{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.chip{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 14px;color:rgba(255,255,255,.8);font-size:12px;font-weight:600}
+
+/* SAFI TERRITORY */
+#territory{background:#fff}
+.terr-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.terr-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.terr-img-card{border-radius:18px;overflow:hidden;position:relative}
+.terr-img-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .4s}
+.terr-img-card:hover img{transform:scale(1.04)}
+.terr-img-card.tall img{height:374px}
+.terr-img-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.65),transparent);padding:16px 14px 12px;color:#fff;font-size:12px;font-weight:600}
+.terr-facts{display:flex;flex-direction:column;gap:20px}
+.terr-fact{background:var(--off);border:1px solid var(--gl);border-radius:18px;padding:24px 26px;display:flex;gap:18px;align-items:flex-start;transition:all .25s}
+.terr-fact:hover{border-color:var(--g4);box-shadow:0 8px 28px rgba(45,122,79,.08)}
+.terr-fact-icon{font-size:30px;flex-shrink:0}
+.terr-fact h4{font-weight:700;font-size:15px;color:var(--dark);margin-bottom:6px}
+.terr-fact p{font-size:13px;color:var(--gm);line-height:1.7}
+.terr-origin-badge{background:linear-gradient(135deg,var(--g2),var(--g3));border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:20px;margin-top:8px}
+.tob-icon{font-size:36px}
+.tob-text{color:#fff;font-size:14px;line-height:1.65}
+.tob-text strong{font-size:16px;display:block;margin-bottom:4px}
+
+/* MARKET */
+#market{background:var(--g5)}
+.mkt-numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:60px}
+.mkt-num-card{border:1px solid rgba(45,122,79,.15);border-radius:20px;padding:32px 20px;text-align:center;background:#fff;transition:all .3s;cursor:default}
+.mkt-num-card:hover{border-color:var(--g4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,122,79,.1)}
+.mkt-icon{font-size:30px;display:block;margin-bottom:12px}
+.mkt-val{font-family:'Sora',sans-serif;font-size:42px;font-weight:900;color:var(--g3);display:block}
+.mkt-unit{font-size:14px;font-weight:700;color:var(--o1);display:block;margin-bottom:6px}
+.mkt-desc{font-size:12px;color:var(--gm);line-height:1.6}
+.chart-box{background:#fff;border-radius:24px;padding:42px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+.chart-head{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:32px;display:flex;align-items:center;gap:10px}
+.chart-bars{display:flex;align-items:flex-end;gap:14px;height:190px}
+.cb-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cb-wrap{flex:1;display:flex;align-items:flex-end;width:100%}
+.cb-bar{width:100%;border-radius:8px 8px 0 0;min-height:6px;position:relative;transition:height 1s}
+.cb-val{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:var(--dark);white-space:nowrap}
+.cb-x{font-size:11px;color:var(--gm);font-weight:500;text-align:center}
+
+/* MENU */
+#menu{background:var(--off)}
+.menu-intro-box{background:linear-gradient(135deg,var(--g1),var(--g2));border-radius:22px;padding:36px 40px;display:flex;align-items:center;gap:32px;margin-bottom:48px}
+.mib-icon{font-size:52px;flex-shrink:0}
+.mib-text h3{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:#fff;margin-bottom:8px}
+.mib-text p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.7}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.menu-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:all .3s}
+.menu-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.menu-img{width:100%;height:188px;object-fit:cover;display:block}
+.menu-body{padding:22px 20px}
+.menu-price{background:var(--o1);color:#fff;font-family:'Sora',sans-serif;font-weight:800;font-size:14px;padding:5px 14px;border-radius:50px;display:inline-block;margin-bottom:12px}
+.menu-name{font-family:'Sora',sans-serif;font-size:17px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.menu-desc{font-size:13px;color:var(--gm);line-height:1.65;margin-bottom:14px}
+.menu-local{font-size:11px;color:var(--g3);font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:12px}
+.menu-tags{display:flex;gap:8px;flex-wrap:wrap}
+.mtag{font-size:10px;font-weight:600;padding:4px 10px;border-radius:6px}
+.tcal{background:var(--o3);color:var(--o1)}
+.theal{background:var(--g5);color:var(--g3)}
+
+/* CREATIVE SECTION — Nos engagements */
+#engage{background:var(--dark)}
+#engage .sec-label{color:var(--g4)}
+#engage .sec-label::before{background:var(--g4)}
+#engage .sec-h2{color:#fff}
+#engage .sec-h2 em{color:var(--g4)}
+.engage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.eng-card{border-radius:22px;padding:40px 30px;position:relative;overflow:hidden;transition:all .3s}
+.eng-card:hover{transform:translateY(-6px)}
+.eng-1{background:linear-gradient(135deg,rgba(76,175,120,.15),rgba(45,122,79,.08));border:1px solid rgba(76,175,120,.2)}
+.eng-2{background:linear-gradient(135deg,rgba(244,131,42,.12),rgba(244,131,42,.05));border:1px solid rgba(244,131,42,.2)}
+.eng-3{background:linear-gradient(135deg,rgba(75,150,255,.1),rgba(75,150,255,.04));border:1px solid rgba(75,150,255,.2)}
+.eng-num{font-family:'Sora',sans-serif;font-size:60px;font-weight:900;opacity:.12;position:absolute;top:16px;right:24px;line-height:1;color:#fff}
+.eng-icon{font-size:40px;margin-bottom:22px;display:block}
+.eng-title{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:12px}
+.eng-desc{font-size:14px;color:rgba(255,255,255,.5);line-height:1.75}
+.eng-tag{display:inline-block;margin-top:18px;font-size:11px;font-weight:700;padding:5px 12px;border-radius:7px}
+.et1{background:rgba(76,175,120,.2);color:var(--g4)}
+.et2{background:rgba(244,131,42,.2);color:var(--o2)}
+.et3{background:rgba(75,150,255,.2);color:#7ab8ff}
+
+/* CLIENTS */
+#clients{background:var(--w)}
+.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cli-card{border:1px solid var(--gl);border-radius:22px;padding:40px 22px;text-align:center;transition:all .3s}
+.cli-card:hover{border-color:var(--g4);box-shadow:0 12px 40px rgba(45,122,79,.1);transform:translateY(-5px)}
+.cli-emoji{font-size:50px;display:block;margin-bottom:20px}
+.cli-title{font-family:'Sora',sans-serif;font-size:19px;font-weight:800;color:var(--dark);margin-bottom:10px}
+.cli-desc{font-size:13px;color:var(--gm);line-height:1.7}
+.cli-pct{font-family:'Sora',sans-serif;font-size:28px;font-weight:900;color:var(--g3);margin-top:18px;display:block}
+.cli-pct-label{font-size:11px;color:var(--gm)}
+
+/* IMPACT */
+#impact{background:var(--g5)}
+.impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:60px}
+.imp-card{background:#fff;border:2px solid var(--gl);border-radius:22px;padding:46px 30px;text-align:center;position:relative;overflow:hidden;transition:border-color .3s}
+.imp-card:hover{border-color:var(--g4)}
+.imp-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--g3),var(--g4))}
+.imp-icon{font-size:36px;display:block;margin-bottom:16px}
+.imp-num{font-family:'Sora',sans-serif;font-size:50px;font-weight:900;color:var(--g3);line-height:1;display:block;margin-bottom:8px}
+.imp-label{font-size:14px;color:var(--gm);font-weight:500}
+.growth-box{background:#fff;border-radius:24px;padding:42px;box-shadow:0 4px 24px rgba(0,0,0,.05)}
+.growth-head{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;margin-bottom:32px;color:var(--dark)}
+.line-svg{width:100%;height:190px;overflow:visible}
+
+/* INVEST */
+#invest{background:var(--dark)}
+#invest .sec-label{color:var(--o2)}
+#invest .sec-label::before{background:var(--o1)}
+#invest .sec-h2{color:#fff}
+#invest .sec-h2 em{color:var(--o1)}
+#invest .sec-intro{color:rgba(255,255,255,.5)}
+.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:52px}
+.inv-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:34px 26px;transition:all .3s}
+.inv-card:hover{background:rgba(76,175,120,.09);border-color:rgba(76,175,120,.28);transform:translateY(-5px)}
+.inv-icon{font-size:36px;margin-bottom:18px;display:block}
+.inv-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:10px}
+.inv-desc{font-size:13px;color:rgba(255,255,255,.48);line-height:1.75}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.kpi{background:rgba(244,131,42,.1);border:1px solid rgba(244,131,42,.22);border-radius:16px;padding:28px 18px;text-align:center}
+.kpi-v{font-family:'Sora',sans-serif;font-size:30px;font-weight:900;color:var(--o1);display:block;margin-bottom:6px}
+.kpi-l{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+
+/* TESTIMONIALS */
+#testi{background:var(--off)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tcard{background:#fff;border:1px solid var(--gl);border-radius:22px;padding:32px 28px;transition:all .3s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.tcard-stars{color:var(--o1);font-size:16px;margin-bottom:14px}
+.tcard-text{font-size:14px;line-height:1.8;color:var(--body);margin-bottom:22px;font-style:italic}
+.tcard-author{display:flex;align-items:center;gap:12px}
+.tcard-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--g3),var(--g4));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.tcard-name{font-weight:700;font-size:14px;color:var(--dark)}
+.tcard-role{font-size:12px;color:var(--gm)}
+
+/* CONTACT */
+#contact{background:var(--g5)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:18px}
+.citem{display:flex;align-items:center;gap:16px;background:#fff;border-radius:14px;padding:18px 22px;box-shadow:0 2px 12px rgba(26,71,49,.06)}
+.cicon{width:44px;height:44px;background:linear-gradient(135deg,var(--g3),var(--g4));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.cval{font-weight:700;font-size:15px;color:var(--dark)}
+.clabel{font-size:13px;color:var(--gm)}
+.socials{margin-top:24px}
+.soc-title{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--dark);margin-bottom:16px}
+.soc-btns{display:flex;gap:11px;flex-wrap:wrap}
+.sbtn{display:flex;align-items:center;gap:8px;padding:11px 18px;border-radius:11px;font-size:13px;font-weight:700;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.sbtn:hover{transform:translateY(-2px)}
+.s-ig{background:linear-gradient(135deg,#e1306c,#f77737);color:#fff}
+.s-fb{background:#1877f2;color:#fff}
+.s-tk{background:#010101;color:#fff}
+.s-li{background:#0a66c2;color:#fff}
+.cform{background:#fff;border-radius:24px;padding:40px;box-shadow:0 8px 40px rgba(26,71,49,.08)}
+.cform-title{font-family:'Sora',sans-serif;font-size:21px;font-weight:800;color:var(--dark);margin-bottom:26px}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px}
+.fg input,.fg textarea{width:100%;padding:12px 16px;border:1.5px solid var(--gl);border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;color:var(--dark);outline:none;transition:border-color .2s}
+.fg input:focus,.fg textarea:focus{border-color:var(--g3)}
+.fg textarea{resize:vertical;min-height:100px}
+.fsub{width:100%;background:var(--o1);color:#fff;border:none;padding:15px;border-radius:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:all .25s}
+.fsub:hover{background:#e6731e;transform:translateY(-1px);box-shadow:0 8px 28px rgba(244,131,42,.4)}
+
+/* FOOTER */
+footer{background:var(--dark);padding:0}
+.ft-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;padding:52px 80px 38px;border-bottom:1px solid rgba(255,255,255,.07)}
+.ft-logo{font-family:'Sora',sans-serif;font-weight:900;font-size:22px;color:#fff}
+.ft-logo span{color:var(--o1)}
+.ft-slogan{font-size:13px;color:rgba(255,255,255,.4);margin-top:5px}
+.ft-nav{display:flex;gap:24px}
+.ft-nav a{color:rgba(255,255,255,.38);text-decoration:none;font-size:13px;transition:color .2s}
+.ft-nav a:hover{color:rgba(255,255,255,.75)}
+.ft-divider{display:flex;align-items:center;gap:18px;padding:0 80px;margin:0}
+.ft-divider::before,.ft-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent)}
+.ft-divider span{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.18);white-space:nowrap}
+.ft-credit{padding:40px 80px 52px;display:flex;flex-direction:column;align-items:center;gap:22px}
+.ft-credit-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);font-weight:500}
+.ft-badge{display:flex;flex-direction:column;align-items:center;gap:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:32px 64px;position:relative;overflow:hidden;transition:border-color .3s}
+.ft-badge::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--g3),var(--o1),var(--g3))}
+.ft-badge:hover{border-color:rgba(244,131,42,.3)}
+.ft-badge-icon{width:52px;height:52px;background:linear-gradient(135deg,var(--g3),var(--o1));border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 8px 24px rgba(244,131,42,.3)}
+.ft-name{font-family:'Sora',sans-serif;font-size:21px;font-weight:900;color:#fff;letter-spacing:.04em;text-align:center}
+.ft-school{font-size:13px;font-weight:700;color:var(--o2);letter-spacing:.08em;text-align:center}
+.ft-chips{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap;justify-content:center}
+.ft-chip{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:7px;padding:4px 13px;font-size:11px;color:rgba(255,255,255,.42)}
+.ft-copy{font-size:12px;color:rgba(255,255,255,.18);text-align:center}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:14px 24px}
+  .nav-links{display:none}
+  section{padding:72px 24px}
+  #hero{padding:100px 24px 72px}
+  #manifeste,#journey,#vision{padding:72px 24px}
+  #safi-band{padding:22px 24px}
+  .story-grid,.sol-grid,.terr-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .prob-grid,.clients-grid,.menu-grid,.mkt-numbers{grid-template-columns:1fr 1fr}
+  .impact-row,.inv-grid,.testi-grid,.engage-grid{grid-template-columns:1fr 1fr}
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .ft-top{padding:36px 24px 28px;flex-direction:column;text-align:center}
+  .ft-divider{padding:0 24px}
+  .ft-credit{padding:30px 24px 44px}
+  .ft-badge{padding:28px 36px}
+}
+@media(max-width:640px){
+  .prob-grid,.clients-grid,.menu-grid,.mkt-numbers,.impact-row,.inv-grid,.testi-grid,.engage-grid{grid-template-columns:1fr}
+  .kpi-row{grid-template-columns:1fr 1fr}
+  .hero-pills{flex-direction:column;gap:10px}
+  .prob-context{flex-direction:column}
+  #manifeste [style*="grid-template-columns:1fr 1fr 1fr"]{display:block!important}
+  #vision [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr 1fr!important}
+  #journey [style*="grid-template-columns:1fr 60px 1fr"]{grid-template-columns:1fr!important}
+  #journey [style*="grid-template-columns:1fr 60px 1fr"] > *:nth-child(2){display:none}
+}
+</style>
+</head>
+<body data-lang="fr">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Plats<span>Healthy</span></div>
+  <ul class="nav-links">
+    <li><a href="#story"><span class="lang-fr-text">Notre histoire</span><span class="lang-ar-text">قصتنا</span></a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#territory">Safi</a></li>
+    <li><a href="#impact"><span class="lang-fr-text">Impact</span><span class="lang-ar-text">أثرنا</span></a></li>
+    <li><a href="#invest"><span class="lang-fr-text">Investir</span><span class="lang-ar-text">استثمر</span></a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="display:flex;align-items:center">
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">درا</button>
+    </div>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <span class="lang-fr-text">Nous contacter</span>
+      <span class="lang-ar-text">تواصلو معنا</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1800&q=85" alt="Healthy food background">
+  </div>
+  <div class="hero-content">
+    <div class="hero-origin">
+      <span class="dot"></span>
+      🌊 <span class="lang-fr-text">Né à Safi, pour Safi</span><span class="lang-ar-text">ولدنا فصافي، خدمنا لصافي</span>
+    </div>
+    <h1 class="hero-h1">
+      <span class="lang-fr-text">Manger <em>sainement</em><br>n'a jamais été<br>aussi <span class="under">accessible.</span></span>
+      <span class="lang-ar-text">الماكلة <em>الصحية</em><br>ما عمرها كانت<br>هكذا <span class="under">قريبة.</span></span>
+    </h1>
+    <p class="hero-sub">
+      <span class="lang-fr-text">Plats Healthy, c'est la réponse de Safi à l'absence d'une alimentation saine, locale et abordable. Un food truck, des produits frais, un engagement fort.</span>
+      <span class="lang-ar-text">بلاتس هيلتي هي جواب صافي على غياب الماكلة الصحية والرخيصة. فود تراك، خضرة طازجة، والتزام حقيقي.</span>
+    </p>
+    <p class="hero-slogan">
+      <span class="lang-fr-text">"Le healthy qui vous rassasie, au prix qui vous plaît"</span>
+      <span class="lang-ar-text">"الصحي اللي كيشبعك، والثمن اللي كيعجبك"</span>
+    </p>
+    <p class="hero-slogan-ar">
+      <span class="lang-fr-text">"الصحي اللي كيشبعك، والثمن اللي كيعجبك"</span>
+      <span class="lang-ar-text">"Le healthy qui vous rassasie, au prix qui vous plaît"</span>
+    </p>
+    <div class="hero-btns">
+      <a href="#story" class="btn-p">🌿 <span class="lang-fr-text">Découvrir notre histoire</span><span class="lang-ar-text">اكتشفو قصتنا</span></a>
+      <a href="#menu" class="btn-s">🥗 <span class="lang-fr-text">Voir le menu</span><span class="lang-ar-text">شوفو المنو</span></a>
+    </div>
+    <div class="hero-pills">
+      <div class="pill">
+        <span>🌱</span>
+        <div><span class="pill-val">100% <span class="lang-fr-text">Frais</span><span class="lang-ar-text">طازج</span></span><span class="pill-label"><span class="lang-fr-text">Ingrédients locaux</span><span class="lang-ar-text">مواد محلية</span></span></div>
+      </div>
+      <div class="pill">
+        <span>💰</span>
+        <div><span class="pill-val"><span class="lang-fr-text">Dès</span><span class="lang-ar-text">من</span> 12 DH</span><span class="pill-label"><span class="lang-fr-text">Prix accessibles</span><span class="lang-ar-text">ثمان فمتناول الجميع</span></span></div>
+      </div>
+      <div class="pill">
+        <span>⚡</span>
+        <div><span class="pill-val">&lt; 5 min</span><span class="pill-label"><span class="lang-fr-text">Service rapide</span><span class="lang-ar-text">خدمة سريعة</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span><span class="lang-fr-text">Défiler</span><span class="lang-ar-text">مرر</span></span>
+  </div>
+</section>
+
+<!-- SAFI BAND -->
+<div id="safi-band">
+  <div class="safi-band-text">
+    <strong>📍 Safi, Maroc</strong> — <span class="lang-fr-text">Région Marrakech-Safi · Côte Atlantique · 300 000+ habitants</span><span class="lang-ar-text">جهة مراكش-آسفي · الساحل الأطلسي · +300 ألف ساكن</span>
+  </div>
+  <div class="safi-band-tags">
+    <span class="safi-band-tag">🎓 <span class="lang-fr-text">25 000 étudiants</span><span class="lang-ar-text">25 ألف طالب</span></span>
+    <span class="safi-band-tag">🏭 <span class="lang-fr-text">Pôle OCP</span><span class="lang-ar-text">قطب OCP</span></span>
+    <span class="safi-band-tag">🌾 <span class="lang-fr-text">Terroir Doukkala</span><span class="lang-ar-text">أرض دكالة</span></span>
+    <span class="safi-band-tag">🐟 <span class="lang-fr-text">Capital de la sardine</span><span class="lang-ar-text">عاصمة السردين</span></span>
+    <span class="safi-band-tag">🌊 <span class="lang-fr-text">Ville côtière</span><span class="lang-ar-text">مدينة ساحلية</span></span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-grid">
+    <div class="story-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?w=900&q=85" alt="Safi Morocco">
+      <div class="story-img-caption">
+        <span>📍 Safi, Maroc</span>
+        Le berceau de Plats Healthy — une ville pleine de vie, mais sans alternative saine accessible.
+      </div>
+    </div>
+    <div class="story-body">
+      <div class="sec-label reveal"><span class="lang-fr-text">Notre histoire</span><span class="lang-ar-text">قصتنا</span></div>
+      <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Tout a commencé<br>dans les rues de <em>Safi</em></span><span class="lang-ar-text">كل شيء بدأ<br>فزنقات <em>صافي</em></span></h2>
+      <blockquote class="story-quote reveal d2">
+        <span class="lang-fr-text">"À Safi, on peut trouver des sardines fraîches à chaque coin de rue. Mais un repas sain et équilibré ? Presque impossible."</span>
+        <span class="lang-ar-text">"فصافي، تلقى السردين الطازج فكل زنقة. أما وجبة صحية ومتوازنة؟ هادي مسألة أخرى."</span>
+      </blockquote>
+      <div class="reveal d3">
+        <p>
+          <span class="lang-fr-text">C'est ce paradoxe qui nous a frappés. Safi est une ville côtière riche, entourée d'une agriculture fertile, baignée par l'Atlantique — pourtant ses habitants, ses étudiants, ses travailleurs n'ont <strong>presque aucune option saine et abordable</strong> pour se nourrir au quotidien.</span>
+          <span class="lang-ar-text">هاد التناقض هو اللي ضرب فينا. صافي مدينة غنية، محاطة بأراضي زراعية خصبة وغاسلها الأطلسي — ومع ذلك سكانها والطلبة والعمال <strong>ما عندهمش أي خيار صحي ورخيص</strong> باش يتغدوا كل يوم.</span>
+        </p>
+        <p>
+          <span class="lang-fr-text">Le fast-food domine. Les sandwichs industriels envahissent les cantines. Et les rares restaurants "healthy" pratiquent des prix qui excluent 90% de la population safiote.</span>
+          <span class="lang-ar-text">الفاست فود هو اللي كيسيطر. السندويشات الصناعية ملات القهاوي. والمطاعم "الصحية" اللي كاينة — أثمانها خارج متناول 90٪ ديال سكان صافي.</span>
+        </p>
+        <p>
+          <span class="lang-fr-text">Nous avons eu une conviction simple : <strong>si les légumes, les fruits, les herbes aromatiques poussent ici, à quelques kilomètres de la ville</strong>, pourquoi les repas sains seraient-ils un luxe ? Plats Healthy est né de cette évidence.</span>
+          <span class="lang-ar-text">عندنا قناعة بسيطة: <strong>إذا كانت الخضرة والفواكه والعشاب كتنبت هنا، على بعد كيلومترات من المدينة</strong>، علاش الماكلة الصحية غادي تكون رفاهية؟ بلاتس هيلتي تولد من هاد البداهة.</span>
+        </p>
+      </div>
+      <div class="story-facts reveal d4">
+        <div class="story-fact">
+          <span class="sf-num">2024</span>
+          <div class="sf-label"><span class="lang-fr-text">Année de lancement</span><span class="lang-ar-text">سنة الانطلاق</span></div>
+        </div>
+        <div class="story-fact">
+          <span class="sf-num">1</span>
+          <div class="sf-label"><span class="lang-fr-text">Food truck actif</span><span class="lang-ar-text">فود تراك شغال</span></div>
+        </div>
+        <div class="story-fact">
+          <span class="sf-num">4</span>
+          <div class="sf-label"><span class="lang-fr-text">Zones couvertes</span><span class="lang-ar-text">مناطق مخدومة</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="sec-label reveal"><span class="lang-fr-text">Le problème</span><span class="lang-ar-text">المشكلة</span></div>
+  <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Pourquoi Safi avait besoin<br>de <em>Plats Healthy</em></span><span class="lang-ar-text">علاش صافي كانت محتاجة<br>لـ<em>بلاتس هيلتي</em></span></h2>
+  <p class="sec-intro reveal d2"><span class="lang-fr-text">Le diagnostic est clair. Les habitants de Safi souffrent d'un désert alimentaire sain — non par manque de ressources, mais par manque de vision et d'initiative.</span><span class="lang-ar-text">التشخيص واضح. سكان صافي معذبين بغياب الماكلة الصحية — مش لأن ما كاينش الموارد، ولكن لأن ما كانش الرؤية والمبادرة.</span></p>
+  <div class="prob-grid">
+    <div class="prob-card reveal d1">
+      <span class="prob-icon">🍔</span>
+      <div class="prob-stat">78%</div>
+      <div class="prob-title"><span class="lang-fr-text">Restaurants fast-food</span><span class="lang-ar-text">مطاعم فاست فود</span></div>
+      <div class="prob-desc"><span class="lang-fr-text">Près de 4 établissements sur 5 servent exclusivement de la restauration rapide industrielle. L'alimentation saine est quasi absente du paysage safiote.</span><span class="lang-ar-text">قريب من 4 محلات من كل 5 كيخدموا غير فاست فود صناعي. الماكلة الصحية غايبة شبه كليا من صافي.</span></div>
+    </div>
+    <div class="prob-card reveal d2">
+      <span class="prob-icon">💸</span>
+      <div class="prob-stat">3×</div>
+      <div class="prob-title"><span class="lang-fr-text">Plus cher que la moyenne</span><span class="lang-ar-text">أغلى من المعدل</span></div>
+      <div class="prob-desc"><span class="lang-fr-text">Les rares options "healthy" existantes coûtent 3 fois plus cher qu'un repas ordinaire — hors de portée pour les étudiants et les travailleurs de la ville.</span><span class="lang-ar-text">الخيارات الصحية النادرة اللي كاينة كتكلف 3 مرات أغلى من الوجبة العادية — خارج متناول الطلبة والعمال.</span></div>
+    </div>
+    <div class="prob-card reveal d3">
+      <span class="prob-icon">📉</span>
+      <div class="prob-stat">+41%</div>
+      <div class="prob-title"><span class="lang-fr-text">Maladies alimentaires</span><span class="lang-ar-text">أمراض التغذية</span></div>
+      <div class="prob-desc"><span class="lang-fr-text">La hausse des maladies chroniques liées à l'alimentation est alarmante. Diabète, obésité, hypertension : des maladies évitables avec une meilleure nutrition.</span><span class="lang-ar-text">ارتفاع الأمراض المزمنة المرتبطة بالتغذية مقلق. السكري، السمنة، ضغط الدم — أمراض يمكن تفاديها بتغذية أحسن.</span></div>
+    </div>
+    <div class="prob-context reveal d4">
+      <div class="prob-context-icon">🌾</div>
+      <div class="prob-context-text">
+        <strong><span class="lang-fr-text">Le paradoxe safiote</span><span class="lang-ar-text">المفارقة الصافية</span></strong>
+        <span class="lang-fr-text">Safi est entourée de terres agricoles parmi les plus fertiles du Maroc (région Doukkala-Abda). Des tomates, des carottes, des herbes aromatiques poussent à moins de 30 km de la ville. Pourtant, les habitants mangent des produits transformés venus de partout. Plats Healthy remet les circuits courts au cœur de l'alimentation urbaine safiote.</span>
+        <span class="lang-ar-text">صافي محاطة بأراضي زراعية من الأخصب في المغرب (منطقة دكالة-عبدة). الطماطم والجزر والعشاب كتنبت على بعد أقل من 30 كيلومتر. ومع ذلك، الناس كتاكل منتجات مصنعة جايا من بعيد. بلاتس هيلتي كترجع الدورة القصيرة لقلب التغذية الحضرية في صافي.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="sol-grid">
+    <div>
+      <div class="sec-label reveal"><span class="lang-fr-text">Notre solution</span><span class="lang-ar-text">حلنا</span></div>
+      <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Plats Healthy :<br>le <em>food truck</em> qui change<br>tout à Safi</span><span class="lang-ar-text">بلاتس هيلتي:<br>الـ<em>فود تراك</em> اللي بدّل<br>كل شيء فصافي</span></h2>
+      <p class="sec-intro reveal d2"><span class="lang-fr-text">Un concept mobile, moderne, ancré dans le territoire safiote. On apporte la nourriture saine directement là où se trouvent les gens.</span><span class="lang-ar-text">كونسبت متنقل، عصري، متجذر في أرض صافي. كنجيبو الماكلة الصحية مباشرة لعند الناس.</span></p>
+      <div class="sol-items reveal d3">
+        <div class="sol-item">
+          <div class="sol-icon">🚚</div>
+          <div class="sol-text"><h4><span class="lang-fr-text">Mobilité totale</span><span class="lang-ar-text">تنقل كامل</span></h4><p><span class="lang-fr-text">Université, zones industrielles, marchés, événements — on vient à vous, partout à Safi.</span><span class="lang-ar-text">الجامعة، المناطق الصناعية، الأسواق، المناسبات — كنجيو ليكم، فأي بلاصة فصافي.</span></p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-icon">🌾</div>
+          <div class="sol-text"><h4><span class="lang-fr-text">Circuit court Doukkala</span><span class="lang-ar-text">دورة قصيرة دكالة</span></h4><p><span class="lang-fr-text">Approvisionnement direct chez les agriculteurs locaux. Fraîcheur garantie, économie locale soutenue.</span><span class="lang-ar-text">توريد مباشر من الفلاحين المحليين. الطزاجة مضمونة، الاقتصاد المحلي مدعوم.</span></p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-icon">⚖️</div>
+          <div class="sol-text"><h4><span class="lang-fr-text">Nutrition pensée</span><span class="lang-ar-text">تغذية مدروسة</span></h4><p><span class="lang-fr-text">Chaque plat est élaboré pour un équilibre macro-nutritionnel optimal, sans compromis sur le goût.</span><span class="lang-ar-text">كل وجبة مدروسة لتوازن غذائي مثالي، بدون تنازل على الطعم.</span></p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-icon">💎</div>
+          <div class="sol-text"><h4><span class="lang-fr-text">Prix pour tous</span><span class="lang-ar-text">أثمان للجميع</span></h4><p><span class="lang-fr-text">De 12 à 35 DH. Parce que manger sain est un droit, pas un privilège.</span><span class="lang-ar-text">من 12 إلى 35 درهم. لأن الأكل الصحي حق مش رفاهية.</span></p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-icon">⚡</div>
+          <div class="sol-text"><h4><span class="lang-fr-text">Service express</span><span class="lang-ar-text">خدمة سريعة</span></h4><p><span class="lang-fr-text">Moins de 5 minutes. Idéal pour les pauses déjeuner courtes des étudiants et salariés.</span><span class="lang-ar-text">أقل من 5 دقائق. مثالي لاستراحات الغداء القصيرة ديال الطلبة والموظفين.</span></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="truck-box reveal d2">
+      <div class="truck-box-inner">
+        <span class="truck-label">🚚 Notre concept</span>
+        <span class="truck-emoji-big">🚐</span>
+        <div class="truck-title">Plats Healthy</div>
+        <div class="truck-city">📍 Safi, Maroc · En mouvement chaque jour</div>
+        <div class="truck-chips">
+          <span class="chip">🌿 100% Frais</span>
+          <span class="chip">🇲🇦 Produits locaux</span>
+          <span class="chip">💰 Abordable</span>
+          <span class="chip">⚡ Rapide</span>
+          <span class="chip">🌊 Esprit Safi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERRITORY — Safi spécifique -->
+<section id="territory">
+  <div class="sec-label reveal">Notre territoire</div>
+  <h2 class="sec-h2 reveal d1">Safi, notre <em>terroir</em>,<br>notre <b>fierté</b></h2>
+  <p class="sec-intro reveal d2">Plats Healthy ne s'est pas implanté à Safi par hasard. Cette ville est notre identité, notre ressource et notre raison d'être.</p>
+  <div class="terr-grid">
+    <div class="terr-imgs reveal d1">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="terr-img-card tall">
+          <img src="https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=700&q=80" alt="Safi coast">
+          <div class="terr-img-caption">🌊 La côte Atlantique de Safi</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="terr-img-card">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=700&q=80" alt="Fresh vegetables farm">
+          <div class="terr-img-caption">🌾 Agriculture locale Doukkala</div>
+        </div>
+        <div class="terr-img-card">
+          <img src="https://images.unsplash.com/photo-1543353071-873f17a7a088?w=700&q=80" alt="Moroccan spices market">
+          <div class="terr-img-caption">🏺 Épices et produits du marché</div>
+        </div>
+      </div>
+    </div>
+    <div class="terr-facts reveal d2">
+      <div class="terr-fact">
+        <div class="terr-fact-icon">🌊</div>
+        <div>
+          <h4>Safi, ville côtière dynamique</h4>
+          <p>300 000 habitants, porte de l'Atlantique. Ville industrielle, universitaire et culturelle avec une jeunesse active et ambitieuse à nourrir.</p>
+        </div>
+      </div>
+      <div class="terr-fact">
+        <div class="terr-fact-icon">🌿</div>
+        <div>
+          <h4>Terroir Doukkala-Abda — exceptionnel</h4>
+          <p>L'une des zones agricoles les plus riches du Maroc. Tomates, carottes, oignons, poivrons, herbes fraîches : notre carte est dictée par ce que la terre safiote produit.</p>
+        </div>
+      </div>
+      <div class="terr-fact">
+        <div class="terr-fact-icon">🎓</div>
+        <div>
+          <h4>Pôle universitaire en plein essor</h4>
+          <p>Université Cadi Ayyad, ISTA, lycées et grandes écoles — 25 000 étudiants constituent notre communauté prioritaire et notre premier marché naturel.</p>
+        </div>
+      </div>
+      <div class="terr-fact">
+        <div class="terr-fact-icon">🏭</div>
+        <div>
+          <h4>Industrie active : OCP et filière halieutique</h4>
+          <p>Des milliers de travailleurs dans les zones industrielles qui méritent une pause déjeuner digne, saine et accessible. Plats Healthy les dessert en priorité.</p>
+        </div>
+      </div>
+      <div class="terr-origin-badge">
+        <div class="tob-icon">📍</div>
+        <div class="tob-text">
+          <strong>Made in Safi — Pour Safi</strong>
+          Chaque ingrédient, chaque recette, chaque décision est pensée pour et avec la communauté safiote. Nous ne sommes pas un concept importé — nous sommes d'ici.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section id="market">
+  <div class="sec-label reveal">Opportunité marché</div>
+  <h2 class="sec-h2 reveal d1">Un marché immense,<br><em>encore vierge</em> à Safi</h2>
+  <p class="sec-intro reveal d2">La demande existe. La population est là. Il manquait juste quelqu'un pour proposer une vraie alternative saine et abordable.</p>
+  <div class="mkt-numbers">
+    <div class="mkt-num-card reveal d1">
+      <span class="mkt-icon">🎓</span>
+      <span class="mkt-val">25K</span>
+      <span class="mkt-unit">Étudiants</span>
+      <div class="mkt-desc">Campus universitaires, ISTA, lycées et grandes écoles</div>
+    </div>
+    <div class="mkt-num-card reveal d2">
+      <span class="mkt-icon">💼</span>
+      <span class="mkt-val">80K</span>
+      <span class="mkt-unit">Salariés</span>
+      <div class="mkt-desc">Zones industrielles, OCP, commerces et bureaux</div>
+    </div>
+    <div class="mkt-num-card reveal d3">
+      <span class="mkt-icon">🏃</span>
+      <span class="mkt-val">15K</span>
+      <span class="mkt-unit">Sportifs</span>
+      <div class="mkt-desc">Clubs sportifs, salles de sport, compétitions régionales</div>
+    </div>
+    <div class="mkt-num-card reveal d4">
+      <span class="mkt-icon">📈</span>
+      <span class="mkt-val">+62%</span>
+      <span class="mkt-unit">Croissance</span>
+      <div class="mkt-desc">Intérêt pour le healthy food au Maroc 2023–2026</div>
+    </div>
+  </div>
+  <div class="chart-box reveal">
+    <div class="chart-head">📊 Croissance du marché healthy food au Maroc (millions MAD)</div>
+    <div class="chart-bars">
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:30%;background:linear-gradient(to top,var(--g2),var(--g3))"><span class="cb-val">120M</span></div></div><div class="cb-x">2022</div></div>
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:42%;background:linear-gradient(to top,var(--g2),var(--g3))"><span class="cb-val">168M</span></div></div><div class="cb-x">2023</div></div>
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:57%;background:linear-gradient(to top,var(--g2),var(--g3))"><span class="cb-val">228M</span></div></div><div class="cb-x">2024</div></div>
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:72%;background:linear-gradient(to top,var(--g3),var(--g4))"><span class="cb-val">290M</span></div></div><div class="cb-x">2025</div></div>
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:88%;background:linear-gradient(to top,var(--o1),var(--o2))"><span class="cb-val">352M</span></div></div><div class="cb-x">2026 ✦</div></div>
+      <div class="cb-col"><div class="cb-wrap"><div class="cb-bar" style="height:100%;background:linear-gradient(to top,var(--o1),#ffca7a);opacity:.6"><span class="cb-val">450M</span></div></div><div class="cb-x">2027 proj.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="sec-label reveal"><span class="lang-fr-text">Notre menu</span><span class="lang-ar-text">منونا</span></div>
+  <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Des plats qui racontent<br><em>Safi</em> dans chaque bouchée</span><span class="lang-ar-text">أكلات كتحكي قصة<br><em>صافي</em> فكل لقمة</span></h2>
+  <p class="sec-intro reveal d2"><span class="lang-fr-text">Chaque recette est une rencontre entre la nutrition moderne et les saveurs du terroir safiote. Élaboré avec amour, servi avec rapidité.</span><span class="lang-ar-text">كل وصفة هي لقاء بين التغذية الحديثة ونكهات أرض صافي. مطيّبة بالحب، مقدّمة بالسرعة.</span></p>
+  <div class="menu-intro-box reveal">
+    <div class="mib-icon">🌾</div>
+    <div class="mib-text">
+      <h3><span class="lang-fr-text">Du champ à l'assiette — en moins d'une heure</span><span class="lang-ar-text">من الحقل للطبق — في أقل من ساعة</span></h3>
+      <p><span class="lang-fr-text">Nos légumes viennent des exploitations agricoles de la région Doukkala-Abda, à moins de 40 km de Safi. Livrés chaque matin, préparés sur place, servis frais. Zéro intermédiaire, zéro compromis.</span><span class="lang-ar-text">خضرتنا جايا من مزارع منطقة دكالة-عبدة، على بعد أقل من 40 كيلومتر من صافي. كتوصل كل صباح، كتتحضر فالمحل، كتتقدم طازجة. بدون وسطاء، بدون تنازلات.</span></p>
+    </div>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-card reveal d1">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Healthy Bowl">
+      <div class="menu-body">
+        <span class="menu-price">35 DH</span>
+        <div class="menu-name">Healthy Bowl Safiote</div>
+        <div class="menu-desc">Quinoa, légumes rôtis de Doukkala, poulet mariné aux épices locales, tahini maison et herbes fraîches du marché de Safi.</div>
+        <div class="menu-local">🌾 Légumes 100% région Doukkala</div>
+        <div class="menu-tags"><span class="mtag tcal">🔥 420 kcal</span><span class="mtag theal">💪 Protéiné</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal d2">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1554433607-66b5efe9d304?w=600&q=80" alt="Healthy Sandwich">
+      <div class="menu-body">
+        <span class="menu-price">25 DH</span>
+        <div class="menu-name">Sandwich Atlantique</div>
+        <div class="menu-desc">Pain complet artisanal, thon frais de Safi, légumes croquants, fromage frais et sauce yaourt maison. La mer dans votre sandwich.</div>
+        <div class="menu-local">🐟 Thon frais pêché à Safi</div>
+        <div class="menu-tags"><span class="mtag tcal">🔥 310 kcal</span><span class="mtag theal">🥗 Équilibré</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal d3">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Fresh Salad">
+      <div class="menu-body">
+        <span class="menu-price">20 DH</span>
+        <div class="menu-name">Salade Doukkala</div>
+        <div class="menu-desc">Salade de saison, tomates cerises, concombre, poivrons et olives de la région, vinaigrette à l'huile d'argan et citron frais de Safi.</div>
+        <div class="menu-local">🫒 Huile d'argan du Maroc</div>
+        <div class="menu-tags"><span class="mtag tcal">🔥 180 kcal</span><span class="mtag theal">🌿 Detox</span></div>
+      </div>
+    </div>
+    <div class="menu-card reveal d4">
+      <img class="menu-img" src="https://images.unsplash.com/photo-1546173159-315724a31696?w=600&q=80" alt="Natural Juice">
+      <div class="menu-body">
+        <span class="menu-price">12 DH</span>
+        <div class="menu-name">Jus Atlantique Pressé</div>
+        <div class="menu-desc">Oranges de Beni Mellal, gingembre frais, menthe de Marrakech, citron de Safi. Pressé à la minute. Zéro sucre ajouté, 100% nature.</div>
+        <div class="menu-local">🍊 Agrumes du Maroc</div>
+        <div class="menu-tags"><span class="mtag tcal">🔥 90 kcal</span><span class="mtag theal">⚡ Énergie</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section id="engage">
+  <div class="sec-label reveal">Nos engagements</div>
+  <h2 class="sec-h2 reveal d1">Trois valeurs qui font<br>l'âme de Plats <em>Healthy</em></h2>
+  <p class="sec-intro reveal d2" style="color:rgba(255,255,255,.5)">Au-delà des plats, Plats Healthy est une vision. Un engagement pour Safi, pour les Safiotes, et pour un avenir alimentaire plus sain.</p>
+  <div class="engage-grid">
+    <div class="eng-card eng-1 reveal d1">
+      <div class="eng-num">01</div>
+      <span class="eng-icon">🌿</span>
+      <div class="eng-title">Santé pour tous</div>
+      <div class="eng-desc">Manger sainement ne devrait pas être un luxe. Chaque Safiote — étudiant, ouvrier, famille — mérite un accès à une alimentation équilibrée et délicieuse sans vider son porte-monnaie.</div>
+      <span class="eng-tag et1">Accessibilité · Équité</span>
+    </div>
+    <div class="eng-card eng-2 reveal d2">
+      <div class="eng-num">02</div>
+      <span class="eng-icon">🇲🇦</span>
+      <div class="eng-title">Fierté locale</div>
+      <div class="eng-desc">Nous refusons l'import quand le local excelle. Nos recettes valorisent les produits marocains, les saveurs sahariennes, les techniques culinaires ancestrales revisitées avec une vision moderne.</div>
+      <span class="eng-tag et2">Local · Authentique</span>
+    </div>
+    <div class="eng-card eng-3 reveal d3">
+      <div class="eng-num">03</div>
+      <span class="eng-icon">🌱</span>
+      <div class="eng-title">Impact durable</div>
+      <div class="eng-desc">Chaque achat chez Plats Healthy finance des agriculteurs locaux, réduit l'empreinte carbone alimentaire et contribue à l'éducation nutritionnelle des jeunes Safiotes. On grandit ensemble.</div>
+      <span class="eng-tag et3">Environnement · Économie locale</span>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="sec-label reveal">Notre communauté</div>
+  <h2 class="sec-h2 reveal d1">Plats Healthy,<br>c'est fait <em>pour vous</em></h2>
+  <p class="sec-intro reveal d2">De l'étudiant de l'ISTA au sportif du club safiote, en passant par l'employé de l'OCP — tout le monde trouve sa place à notre food truck.</p>
+  <div class="clients-grid">
+    <div class="cli-card reveal d1">
+      <span class="cli-emoji">🎓</span>
+      <div class="cli-title">Étudiants</div>
+      <div class="cli-desc">Budget étudiant, besoins caloriques élevés. On vous offre des repas complets, nutritifs et délicieux que vous pouvez vraiment vous permettre entre deux cours.</div>
+      <span class="cli-pct">35%</span>
+      <div class="cli-pct-label">de notre clientèle</div>
+    </div>
+    <div class="cli-card reveal d2">
+      <span class="cli-emoji">💼</span>
+      <div class="cli-title">Salariés</div>
+      <div class="cli-desc">Pause déjeuner de 30 minutes, énergie pour tenir jusqu'au soir. Nos plats sont conçus pour nourrir votre productivité sans plomber votre après-midi.</div>
+      <span class="cli-pct">30%</span>
+      <div class="cli-pct-label">de notre clientèle</div>
+    </div>
+    <div class="cli-card reveal d3">
+      <span class="cli-emoji">🏃</span>
+      <div class="cli-title">Sportifs</div>
+      <div class="cli-desc">Macros calculées, protéines optimisées, glucides adaptés à l'effort. Nos bowls et sandwichs sont pensés pour la performance et la récupération.</div>
+      <span class="cli-pct">20%</span>
+      <div class="cli-pct-label">de notre clientèle</div>
+    </div>
+    <div class="cli-card reveal d4">
+      <span class="cli-emoji">❤️</span>
+      <div class="cli-title">Familles & Santé</div>
+      <div class="cli-desc">Pour ceux qui font attention, qui ont des enfants à nourrir sainement, ou qui souhaitent simplement adopter de meilleures habitudes alimentaires au quotidien.</div>
+      <span class="cli-pct">15%</span>
+      <div class="cli-pct-label">de notre clientèle</div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section id="impact">
+  <div class="sec-label reveal"><span class="lang-fr-text">Notre impact</span><span class="lang-ar-text">أثرنا</span></div>
+  <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Les chiffres prouvent<br>que <em>ça marche</em></span><span class="lang-ar-text">الأرقام كتثبت<br>أنها <em>كتخدم</em></span></h2>
+  <p class="sec-intro reveal d2"><span class="lang-fr-text">Depuis le lancement, Plats Healthy a déjà transformé les habitudes alimentaires de centaines de Safiotes.</span><span class="lang-ar-text">منذ الانطلاق، بلاتس هيلتي بدّلت عادات الأكل ديال المئات من أبناء صافي.</span></p>
+  <div class="impact-row">
+    <div class="imp-card reveal d1">
+      <span class="imp-icon">🥗</span>
+      <span class="imp-num" data-target="5000" data-suffix="+">0</span>
+      <div class="imp-label"><span class="lang-fr-text">Repas sains servis</span><span class="lang-ar-text">وجبة صحية قُدّمت</span></div>
+    </div>
+    <div class="imp-card reveal d2">
+      <span class="imp-icon">😊</span>
+      <span class="imp-num" data-target="1200" data-suffix="+">0</span>
+      <div class="imp-label"><span class="lang-fr-text">Clients satisfaits</span><span class="lang-ar-text">زبون راضي</span></div>
+    </div>
+    <div class="imp-card reveal d3">
+      <span class="imp-icon">🔥</span>
+      <span class="imp-num" data-target="250000" data-suffix="+">0</span>
+      <div class="imp-label"><span class="lang-fr-text">Calories évitées</span><span class="lang-ar-text">سعرة حرارية تم تفاديها</span></div>
+    </div>
+  </div>
+  <div class="growth-box reveal">
+    <div class="growth-head">📈 Évolution du chiffre d'affaires mensuel (MAD)</div>
+    <svg class="line-svg" viewBox="0 0 900 180" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="lg1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#2d7a4f" stop-opacity=".28"/>
+          <stop offset="100%" stop-color="#2d7a4f" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="0" y1="45" x2="900" y2="45" stroke="#e8f0ec" stroke-width="1"/>
+      <line x1="0" y1="90" x2="900" y2="90" stroke="#e8f0ec" stroke-width="1"/>
+      <line x1="0" y1="135" x2="900" y2="135" stroke="#e8f0ec" stroke-width="1"/>
+      <path d="M0,155 L0,140 C80,140 100,120 160,105 C220,90 260,75 320,58 C380,42 420,30 480,22 C540,14 580,18 640,12 C700,6 740,8 800,5 C840,3 880,4 900,4 L900,155 Z" fill="url(#lg1)"/>
+      <path d="M0,140 C80,140 100,120 160,105 C220,90 260,75 320,58 C380,42 420,30 480,22 C540,14 580,18 640,12 C700,6 740,8 800,5 C840,3 880,4 900,4" fill="none" stroke="#2d7a4f" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="0" cy="140" r="5" fill="#2d7a4f"/><circle cx="160" cy="105" r="5" fill="#2d7a4f"/>
+      <circle cx="320" cy="58" r="5" fill="#2d7a4f"/><circle cx="480" cy="22" r="5" fill="#f4832a"/>
+      <circle cx="640" cy="12" r="5" fill="#f4832a"/><circle cx="800" cy="5" r="5" fill="#f4832a"/>
+      <text x="0" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M1</text>
+      <text x="160" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M2</text>
+      <text x="320" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M3</text>
+      <text x="480" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M4</text>
+      <text x="640" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M5</text>
+      <text x="800" y="173" fill="#8a9e95" font-size="11" text-anchor="middle">M6</text>
+      <text x="8" y="130" fill="#1a4731" font-size="10" font-weight="bold">3.2K</text>
+      <text x="168" y="95" fill="#1a4731" font-size="10" font-weight="bold">6.8K</text>
+      <text x="328" y="48" fill="#1a4731" font-size="10" font-weight="bold">12.4K</text>
+      <text x="488" y="14" fill="#f4832a" font-size="10" font-weight="bold">18.6K</text>
+      <text x="648" y="5" fill="#f4832a" font-size="10" font-weight="bold">24.1K</text>
+      <text x="808" y="4" fill="#f4832a" font-size="10" font-weight="bold">31.5K</text>
+    </svg>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testi">
+  <div class="sec-label reveal">Témoignages</div>
+  <h2 class="sec-h2 reveal d1">La voix de la <em>communauté</em><br>safiote</h2>
+  <p class="sec-intro reveal d2">Nos meilleurs ambassadeurs sont nos clients. Voici ce qu'ils pensent de Plats Healthy.</p>
+  <div class="testi-grid">
+    <div class="tcard reveal d1">
+      <div class="tcard-stars">★★★★★</div>
+      <div class="tcard-text">"Waw, enfin quelque chose de sain à Safi ! Le Healthy Bowl avec les légumes locaux — c'est frais, c'est bon, et pour 35 DH je repars rassasiée. Je viens chaque semaine maintenant."</div>
+      <div class="tcard-author">
+        <div class="tcard-av">👩</div>
+        <div><div class="tcard-name">Fatima Z.</div><div class="tcard-role">Étudiante, Université Safi</div></div>
+      </div>
+    </div>
+    <div class="tcard reveal d2">
+      <div class="tcard-stars">★★★★★</div>
+      <div class="tcard-text">"Le Sandwich Atlantique avec le thon frais de Safi — c'est une idée de génie ! On sent vraiment la différence avec les sandwichs industriels. Bravo pour le concept !"</div>
+      <div class="tcard-author">
+        <div class="tcard-av">👨</div>
+        <div><div class="tcard-name">Youssef B.</div><div class="tcard-role">Footballeur, Club Safi</div></div>
+      </div>
+    </div>
+    <div class="tcard reveal d3">
+      <div class="tcard-stars">★★★★★</div>
+      <div class="tcard-text">"En tant qu'employée de l'OCP, j'avais du mal à trouver un bon repas près de la zone industrielle. Plats Healthy a tout changé — rapide, délicieux et vraiment sain."</div>
+      <div class="tcard-author">
+        <div class="tcard-av">👩</div>
+        <div><div class="tcard-name">Khadija M.</div><div class="tcard-role">Technicienne, OCP Safi</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTE CRÉATIF -->
+<section id="manifeste" style="background:linear-gradient(160deg,#080f0b 0%,#0d2818 40%,#1a3a20 100%);padding:120px 80px;overflow:hidden;position:relative">
+  <div style="position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(76,175,120,0.12),transparent 70%);pointer-events:none"></div>
+  <div style="position:absolute;bottom:-60px;left:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(244,131,42,0.1),transparent 70%);pointer-events:none"></div>
+  <div style="max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:1">
+    <div class="sec-label reveal" style="justify-content:center;color:#4caf78">Notre manifeste</div>
+    <h2 class="sec-h2 reveal d1" style="color:#fff;font-size:clamp(32px,4.5vw,58px);letter-spacing:-2px;margin-bottom:0">
+      Safi nourrit<br>le monde<br><em style="color:#f4832a">depuis toujours.</em><br>
+      <span style="color:rgba(255,255,255,0.45);font-size:0.65em;letter-spacing:-0.5px">Il est temps qu'elle se nourrisse <em style="color:#4caf78;font-style:normal">elle-même.</em></span>
+    </h2>
+
+    <div class="reveal d2" style="margin:52px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);border-radius:20px;overflow:hidden">
+      <div style="background:#0d1f12;padding:36px 28px;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">🐟</div>
+        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#4caf78;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">La sardine</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7">Safi exporte ses sardines aux quatre coins du monde. Ses saveurs méritent d'être célébrées ici, à la maison.</div>
+      </div>
+      <div style="background:#0d1f12;padding:36px 28px;text-align:center;border-left:1px solid rgba(255,255,255,0.06);border-right:1px solid rgba(255,255,255,0.06)">
+        <div style="font-size:36px;margin-bottom:12px">🌾</div>
+        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#4caf78;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">La terre</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7">Doukkala-Abda, l'un des greniers du Maroc. Ces légumes qui nourrissent d'autres villes doivent nourrir Safi en premier.</div>
+      </div>
+      <div style="background:#0d1f12;padding:36px 28px;text-align:center">
+        <div style="font-size:36px;margin-bottom:12px">🌊</div>
+        <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#4caf78;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">L'Atlantique</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7">L'air salin, la lumière du bord de mer, l'énergie d'une ville qui se réveille. Plats Healthy est né de cette atmosphère unique.</div>
+      </div>
+    </div>
+
+    <p class="reveal d3" style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(17px,2vw,22px);color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:36px">
+      "Nous ne vendons pas seulement de la nourriture.<br>Nous vendons le droit de manger sainement<br>sans sacrifier ses fins de mois."
+    </p>
+
+    <div class="reveal d4" style="display:inline-flex;align-items:center;gap:12px;background:rgba(244,131,42,0.12);border:1px solid rgba(244,131,42,0.25);border-radius:50px;padding:12px 28px">
+      <span style="font-size:18px">🍊</span>
+      <span style="font-size:14px;color:rgba(255,255,255,0.7);font-weight:600">الصحي اللي كيشبعك، والثمن اللي كيعجبك</span>
+    </div>
+  </div>
+</section>
+
+<!-- UNE JOURNÉE AVEC LE TRUCK -->
+<section id="journey" style="background:#fff;padding:100px 80px">
+  <div class="sec-label reveal">Dans les coulisses</div>
+  <h2 class="sec-h2 reveal d1">Une journée avec<br>le truck <em>Plats Healthy</em></h2>
+  <p class="sec-intro reveal d2">De l'aube jusqu'au coucher du soleil, notre food truck sillonne Safi. Voici une vraie journée, de l'approvisionnement à la fermeture.</p>
+
+  <div class="reveal d2" style="position:relative">
+    <!-- Timeline line -->
+    <div style="position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#2d7a4f,#f4832a);transform:translateX(-50%);z-index:0"></div>
+
+    <div style="display:flex;flex-direction:column;gap:0">
+
+      <!-- 05:30 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;margin-bottom:0;position:relative;z-index:1">
+        <div style="background:#f9fafb;border:1px solid #f0f4f2;border-radius:20px;padding:28px 32px;text-align:right">
+          <div style="font-size:28px;margin-bottom:10px">🌅</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Approvisionnement Doukkala</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">On part au marché de gros et chez nos agriculteurs partenaires de la région. Légumes cueillis la veille, herbes fraîches du matin. Tout est sélectionné à la main.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#2d7a4f,#4caf78);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">05h<br>30</div>
+        </div>
+        <div></div>
+      </div>
+
+      <!-- 07:00 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;position:relative;z-index:1">
+        <div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#2d7a4f,#4caf78);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">07h<br>00</div>
+        </div>
+        <div style="background:#f9fafb;border:1px solid #f0f4f2;border-radius:20px;padding:28px 32px">
+          <div style="font-size:28px;margin-bottom:10px">🔪</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Préparation des plats</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">Découpe, marinades, sauces maison. Tout est préparé frais chaque matin. Zéro produits réchauffés, zéro shortcuts. L'authenticité a un prix, on le paie en temps.</div>
+        </div>
+      </div>
+
+      <!-- 08:30 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;position:relative;z-index:1">
+        <div style="background:#f9fafb;border:1px solid #f0f4f2;border-radius:20px;padding:28px 32px;text-align:right">
+          <div style="font-size:28px;margin-bottom:10px">🎓</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Campus — Premier service</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">On s'installe devant l'université. Les étudiants arrivent, les jus pressés fument. Le premier sourire de la journée. Pour beaucoup, c'est leur seul repas sain du jour.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#2d7a4f,#4caf78);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">08h<br>30</div>
+        </div>
+        <div></div>
+      </div>
+
+      <!-- 12:00 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;position:relative;z-index:1">
+        <div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#f4832a,#ffa55a);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">12h<br>00</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(244,131,42,0.06),rgba(244,131,42,0.02));border:1px solid rgba(244,131,42,0.2);border-radius:20px;padding:28px 32px">
+          <div style="font-size:28px;margin-bottom:10px">🏭</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Zone OCP — Coup de feu</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">La vraie guerre. Centaines de commandes en 45 minutes. Notre organisation est rodée, notre équipe est cadencée. 5 minutes chrono, sourire inclus.</div>
+        </div>
+      </div>
+
+      <!-- 16:00 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;position:relative;z-index:1">
+        <div style="background:#f9fafb;border:1px solid #f0f4f2;border-radius:20px;padding:28px 32px;text-align:right">
+          <div style="font-size:28px;margin-bottom:10px">🏃</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Clubs sportifs — After-training</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">On rejoint les clubs de sport pour le service post-entraînement. Bowls protéinés, jus de récupération. Les sportifs safiotes ont enfin leur partenaire nutritionnel.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#f4832a,#ffa55a);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">16h<br>00</div>
+        </div>
+        <div></div>
+      </div>
+
+      <!-- 20:00 -->
+      <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:24px;align-items:center;position:relative;z-index:1">
+        <div></div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#1a4731,#2d7a4f);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Sora',sans-serif;font-size:10px;font-weight:800;text-align:center;line-height:1.2">20h<br>00</div>
+        </div>
+        <div style="background:#f9fafb;border:1px solid #f0f4f2;border-radius:20px;padding:28px 32px">
+          <div style="font-size:28px;margin-bottom:10px">🌊</div>
+          <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0d1f17;margin-bottom:6px">Bord de mer — Clôture</div>
+          <div style="font-size:13px;color:#8a9e95;line-height:1.7">Face à l'Atlantique, on sert les dernières commandes au coucher du soleil. Ce moment résume tout : la beauté de Safi, la fierté du travail bien fait, et l'envie de recommencer demain.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VISION 2028 -->
+<section id="vision" style="background:linear-gradient(135deg,#1a4731,#2d7a4f);padding:100px 80px;overflow:hidden;position:relative">
+  <div style="position:absolute;top:0;right:0;width:400px;height:400px;background:radial-gradient(circle,rgba(244,131,42,0.15),transparent 70%);pointer-events:none"></div>
+
+  <div class="sec-label reveal" style="color:#4caf78">Notre vision</div>
+  <h2 class="sec-h2 reveal d1" style="color:#fff">De Safi au Maroc :<br>la route de <em style="color:#f4832a">2028</em></h2>
+  <p class="sec-intro reveal d2" style="color:rgba(255,255,255,0.6)">Plats Healthy n'est pas un projet local. C'est le premier maillon d'une chaîne nationale de restauration saine et accessible. Voici notre feuille de route.</p>
+
+  <div class="reveal d2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:60px">
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:12px;right:16px;font-family:'Sora',sans-serif;font-size:48px;font-weight:900;color:rgba(255,255,255,0.05)">1</div>
+      <div style="font-size:30px;margin-bottom:16px">📍</div>
+      <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#4caf78;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Phase 1 · 2024–2025</div>
+      <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:10px">Ancrage Safi</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7">1 truck, 4 zones couvertes, 1 200+ clients fidèles. Preuve du concept validée sur le terrain.</div>
+      <div style="margin-top:18px;display:inline-block;background:rgba(76,175,120,0.2);border:1px solid rgba(76,175,120,0.3);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:#4caf78">✓ En cours</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:12px;right:16px;font-family:'Sora',sans-serif;font-size:48px;font-weight:900;color:rgba(255,255,255,0.05)">2</div>
+      <div style="font-size:30px;margin-bottom:16px">🚛</div>
+      <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#ffa55a;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Phase 2 · 2025–2026</div>
+      <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:10px">Expansion régionale</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7">3 trucks à Safi, ouverture El Jadida et Khouribga. Formation d'une équipe, standardisation des processus.</div>
+      <div style="margin-top:18px;display:inline-block;background:rgba(255,165,90,0.15);border:1px solid rgba(255,165,90,0.25);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:#ffa55a">→ Planifié</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:12px;right:16px;font-family:'Sora',sans-serif;font-size:48px;font-weight:900;color:rgba(255,255,255,0.05)">3</div>
+      <div style="font-size:30px;margin-bottom:16px">🏙️</div>
+      <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#7ab8ff;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Phase 3 · 2026–2027</div>
+      <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:10px">Grandes villes</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7">Marrakech, Casablanca, Rabat. Application mobile, programme de fidélité, partenariats universitaires nationaux.</div>
+      <div style="margin-top:18px;display:inline-block;background:rgba(122,184,255,0.12);border:1px solid rgba(122,184,255,0.2);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:#7ab8ff">◇ Vision</div>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:32px 24px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:12px;right:16px;font-family:'Sora',sans-serif;font-size:48px;font-weight:900;color:rgba(255,255,255,0.05)">4</div>
+      <div style="font-size:30px;margin-bottom:16px">🌍</div>
+      <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#c47fff;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px">Phase 4 · 2027–2028</div>
+      <div style="font-family:'Sora',sans-serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:10px">Marque nationale</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7">10+ villes, franchise du concept, cuisine centrale, ambition export vers l'Europe marocaine. Plats Healthy — l'ambassadeur du manger sain made in Morocco.</div>
+      <div style="margin-top:18px;display:inline-block;background:rgba(196,127,255,0.12);border:1px solid rgba(196,127,255,0.2);border-radius:8px;padding:5px 12px;font-size:11px;font-weight:700;color:#c47fff">★ Ambition</div>
+    </div>
+  </div>
+
+  <!-- Citation finale inspirante -->
+  <div class="reveal d3" style="background:rgba(0,0,0,0.2);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:48px 56px;text-align:center;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(76,175,120,0.08),transparent 70%)"></div>
+    <div style="position:relative;z-index:1">
+      <div style="font-size:40px;margin-bottom:24px">🌿</div>
+      <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(18px,2.2vw,26px);color:#fff;line-height:1.65;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto">
+        "Un food truck aujourd'hui.<br>Une révolution alimentaire demain.<br>Commencée ici, à Safi."
+      </p>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+        <span style="background:rgba(76,175,120,0.15);border:1px solid rgba(76,175,120,0.25);border-radius:50px;padding:8px 20px;color:#4caf78;font-size:13px;font-weight:700">🇲🇦 Fièrement marocain</span>
+        <span style="background:rgba(244,131,42,0.12);border:1px solid rgba(244,131,42,0.22);border-radius:50px;padding:8px 20px;color:#ffa55a;font-size:13px;font-weight:700">📍 Né à Safi</span>
+        <span style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:50px;padding:8px 20px;color:rgba(255,255,255,0.6);font-size:13px;font-weight:700">🌍 Pour le monde</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVEST -->
+<section id="invest">
+  <div class="sec-label reveal"><span class="lang-fr-text">Investissement</span><span class="lang-ar-text">الاستثمار</span></div>
+  <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Pourquoi investir dans<br>Plats <em>Healthy</em> ?</span><span class="lang-ar-text">علاش تستثمر في<br>بلاتس <em>هيلتي</em>؟</span></h2>
+  <p class="sec-intro reveal d2"><span class="lang-fr-text">Un modèle scalable, un marché en forte croissance, une marque authentique et un impact social réel. L'opportunité est ici, à Safi.</span><span class="lang-ar-text">موديل قابل للتوسع، سوق في نمو قوي، علامة أصيلة وأثر اجتماعي حقيقي. الفرصة هنا، فصافي.</span></p>
+  <div class="inv-grid">
+    <div class="inv-card reveal d1"><span class="inv-icon">🚀</span><div class="inv-title">Scalabilité prouvée</div><div class="inv-desc">Modèle food truck réplicable à volonté — Safi, El Jadida, Marrakech, Casablanca. Chaque nouveau truck = nouveau flux de revenus immédiat.</div></div>
+    <div class="inv-card reveal d2"><span class="inv-icon">📈</span><div class="inv-title">Marché en explosion</div><div class="inv-desc">+62% de croissance du healthy food au Maroc. Premier entrant sur Safi = avantage concurrentiel durable et une marque déjà connue.</div></div>
+    <div class="inv-card reveal d3"><span class="inv-icon">💡</span><div class="inv-title">Marque forte & authentique</div><div class="inv-desc">Ancrage territorial unique, storytelling Safi, identité visuelle premium. Une marque, pas juste un point de vente ambulant.</div></div>
+    <div class="inv-card reveal d1"><span class="inv-icon">🔄</span><div class="inv-title">Modèle reproductible</div><div class="inv-desc">Processus standardisés, recettes documentées, chaîne d'approvisionnement locale optimisée. Opérationnel en 3 semaines par truck.</div></div>
+    <div class="inv-card reveal d2"><span class="inv-icon">💚</span><div class="inv-title">Impact social positif</div><div class="inv-desc">Création d'emplois locaux, soutien à l'agriculture Doukkala, amélioration de la santé publique à Safi. Un investissement qui fait du bien.</div></div>
+    <div class="inv-card reveal d3"><span class="inv-icon">🏆</span><div class="inv-title">Génération Z engagée</div><div class="inv-desc">Notre cible principale est digitale, consciente de la nutrition et prescriptrice. Instagram, TikTok, bouche-à-oreille — le marketing se fait naturellement.</div></div>
+  </div>
+  <div class="kpi-row">
+    <div class="kpi reveal d1"><span class="kpi-v">18 mois</span><div class="kpi-l">Retour sur investissement estimé</div></div>
+    <div class="kpi reveal d2"><span class="kpi-v">×3</span><div class="kpi-l">Croissance du CA mois 1 → mois 6</div></div>
+    <div class="kpi reveal d3"><span class="kpi-v">85%</span><div class="kpi-l">Taux de satisfaction client</div></div>
+    <div class="kpi reveal d4"><span class="kpi-v">10+</span><div class="kpi-l">Villes cibles au Maroc d'ici 2028</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label reveal"><span class="lang-fr-text">Nous rejoindre</span><span class="lang-ar-text">انضمو لينا</span></div>
+  <h2 class="sec-h2 reveal d1"><span class="lang-fr-text">Parlons ensemble<br>de votre <em>investissement</em></span><span class="lang-ar-text">نهدرو مع بعضياتنا<br>على <em>استثمارك</em></span></h2>
+  <p class="sec-intro reveal d2"><span class="lang-fr-text">Investisseur, partenaire stratégique ou simplement curieux ? Notre équipe est disponible pour vous présenter le projet en détail.</span><span class="lang-ar-text">مستثمر، شريك استراتيجي، ولا غير فضولي؟ فريقنا متاح باش يقدم ليك المشروع بالتفصيل.</span></p>
+  <div class="contact-grid">
+    <div>
+      <div class="cinfo">
+        <div class="citem reveal d1">
+          <div class="cicon">📍</div>
+          <div><div class="clabel"><span class="lang-fr-text">Localisation</span><span class="lang-ar-text">الموقع</span></div><div class="cval">Safi, Maroc — <span class="lang-fr-text">Région Marrakech-Safi</span><span class="lang-ar-text">جهة مراكش-آسفي</span></div></div>
+        </div>
+        <div class="citem reveal d2">
+          <div class="cicon">📞</div>
+          <div><div class="clabel"><span class="lang-fr-text">Téléphone</span><span class="lang-ar-text">الهاتف</span></div><div class="cval">+212 6XX XXX XXX</div></div>
+        </div>
+        <div class="citem reveal d3">
+          <div class="cicon">📧</div>
+          <div><div class="clabel">Email</div><div class="cval">contact@platshealthy.ma</div></div>
+        </div>
+      </div>
+      <div class="socials reveal d4">
+        <div class="soc-title"><span class="lang-fr-text">Suivez-nous</span><span class="lang-ar-text">تابعونا</span></div>
+        <div class="soc-btns">
+          <a href="#" class="sbtn s-ig">📸 Instagram</a>
+          <a href="#" class="sbtn s-fb">👍 Facebook</a>
+          <a href="#" class="sbtn s-tk">🎵 TikTok</a>
+          <a href="#" class="sbtn s-li">💼 LinkedIn</a>
+        </div>
+      </div>
+    </div>
+    <div class="cform reveal d2">
+      <div class="cform-title"><span class="lang-fr-text">Envoyer un message</span><span class="lang-ar-text">ابعث رسالة</span></div>
+      <div class="fg"><label><span class="lang-fr-text">Votre nom</span><span class="lang-ar-text">اسمك</span></label><input type="text" placeholder="Prénom & Nom / الاسم الكامل"></div>
+      <div class="fg"><label>Email</label><input type="email" placeholder="exemple@email.com"></div>
+      <div class="fg"><label><span class="lang-fr-text">Sujet</span><span class="lang-ar-text">الموضوع</span></label><input type="text" placeholder="Investissement / Partenariat / Autre"></div>
+      <div class="fg"><label><span class="lang-fr-text">Message</span><span class="lang-ar-text">الرسالة</span></label><textarea placeholder="Décrivez votre intérêt... / اكتب ما بغيتي..."></textarea></div>
+      <button class="fsub"><span class="lang-fr-text">Envoyer le message 🌿</span><span class="lang-ar-text">ابعث الرسالة 🌿</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-logo">Plats<span>Healthy</span></div>
+      <div class="ft-slogan"><span class="lang-fr-text">"Le healthy qui vous rassasie, au prix qui vous plaît"</span><span class="lang-ar-text">"الصحي اللي كيشبعك، والثمن اللي كيعجبك"</span> · <span class="lang-fr-text">Né à Safi</span><span class="lang-ar-text">ولدنا فصافي</span> 🌊</div>
+    </div>
+    <nav class="ft-nav">
+      <a href="#story"><span class="lang-fr-text">Histoire</span><span class="lang-ar-text">القصة</span></a>
+      <a href="#menu">Menu</a>
+      <a href="#territory">Safi</a>
+      <a href="#impact">Impact</a>
+      <a href="#invest"><span class="lang-fr-text">Investir</span><span class="lang-ar-text">استثمر</span></a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="ft-divider"><span><span class="lang-fr-text">Projet académique</span><span class="lang-ar-text">مشروع أكاديمي</span></span></div>
+  <div class="ft-credit">
+    <div class="ft-credit-label"><span class="lang-fr-text">Projet réalisé et présenté par</span><span class="lang-ar-text">مشروع منجز ومقدم من طرف</span></div>
+    <div class="ft-badge">
+      <div class="ft-badge-icon">🎓</div>
+      <div class="ft-name">YASSINE ELKALKHA</div>
+      <div class="ft-school">ISTA1</div>
+      <div class="ft-chips">
+        <span class="ft-chip">📍 Safi, Maroc</span>
+        <span class="ft-chip">🌿 Plats Healthy</span>
+        <span class="ft-chip">📅 2026</span>
+      </div>
+    </div>
+    <div class="ft-copy">© 2026 Plats Healthy · Safi, Maroc 🇲🇦 · <span class="lang-fr-text">Tous droits réservés</span><span class="lang-ar-text">جميع الحقوق محفوظة</span></div>
+  </div>
+</footer>
+
+<script>
+// LANGUAGE TOGGLE
+function setLang(lang) {
+  document.body.setAttribute('data-lang', lang);
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-ar').classList.toggle('active', lang === 'ar');
+  localStorage.setItem('platshealthy-lang', lang);
+}
+// Init language
+(function(){
+  const saved = localStorage.getItem('platshealthy-lang') || 'fr';
+  setLang(saved);
+})();
+
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.12});
+reveals.forEach(r=>obs.observe(r));
+
+function animateCounter(el){
+  const target=parseInt(el.dataset.target),suffix=el.dataset.suffix||'',duration=2000,step=target/(duration/16);
+  let cur=0;
+  const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t)}
+  el.textContent=(cur>=1000?Math.floor(cur).toLocaleString('fr'):Math.floor(cur))+suffix;},16);
+}
+const cobs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.imp-num[data-target]').forEach(n=>{if(!n.dataset.animated){n.dataset.animated='1';animateCounter(n)}})})},{threshold:.3});
+const cs=document.getElementById('impact');if(cs)cobs.observe(cs);
+
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.background=
+  window.scrollY>80?'rgba(8,15,11,.97)':'rgba(8,15,11,.8)';
+});
+</script>
+</body>
+</html>
